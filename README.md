@@ -19,3 +19,6 @@ Process Layout, HTML, & CSS (Back-end):
 - Jom
 - Allonah
 - Arnaldo
+
+
+/var/www/WebApp/public_html ---> DocumentRoot of virtualhost of MP2
