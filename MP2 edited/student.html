@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+<head>
+  <link rel="stylesheet" media="screen" type="text/css" href="style.css" />
+    <meta charset="utf-8">
+  </head>
+    
+<body onload="loadJsonDoc()">
+	<h1>Students List</h1>
+
+  <button><a href="attendance.html">Back</a></button>&nbsp;
+
+  <button>Attendance History</button>
+	
+
+<table id="table" border="on">
+  <tr>
+    <th>Full Name</th>
+    <th>Course and Year</th>
+  </tr>  
+</table>
+	
+</body>
+</html>
+
+<script type="text/javascript">
+
+  function loadJsonDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = xhttp.responseText;
+      //document.getElementById("but").innerHTML = data;
+
+     
+      
+      localStorage.setItem('data', JSON.stringify(data));
+      var obj = JSON.parse(localStorage.getItem('data'));
+
+      var table = document.getElementById("table");
+        
+        var name = 'name';
+        var course = 'course';
+
+
+      for(var i = 0; i < obj.length; i++){
+       
+        table.innerHTML += "<tr><td>" + obj[i].name + "</td><td>" + obj[i].course + "</td></tr>";
+      }
+
+    
+
+    }
+  };
+  xhttp.open("GET", "student.json", true);
+  xhttp.send();
+
+}
+
+</script>
